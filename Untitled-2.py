@@ -1,5 +1,8 @@
 from pickle import TRUE
+from pkg_resources import compatible_platforms
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 import datetime
 import requests
@@ -46,14 +49,14 @@ def load_price_saita():
         #id_find = [x.get_attribute("id") for x in driver.find_elements_by_xpath("//div[@data-marker='item']")]
     #except:
         #driver.get("https://www.avito.ru/volgograd/avtomobili/s_probegom-ASgBAgICAUSGFMjmAQ?f=ASgBAQICAUSGFMjmAQFAptoOFAI&radius=100&s=104&user=1")
-     
-# options
-options = webdriver.ChromeOptions()
 
-# for ChromeDriver version 79.0.3945.16 or over
-options.add_argument("--disable-blink-features=AutomationControlled")
 
-driver = webdriver.Chrome(executable_path="brauser\\chromedriver.exe",options=options)
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--window-size=1920,1080')
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--disable-dev-shm-usage') 
+driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
 
 try:
     #start_time = datetime.datetime.now()
@@ -61,9 +64,8 @@ try:
     driver.get("https://www.avito.ru/volgograd/avtomobili/s_probegom-ASgBAgICAUSGFMjmAQ?f=ASgBAQICAUSGFMjmAQFAptoOFAI&radius=100&s=104&user=1")  
     url = "https://www.avito.ru/volgograd/avtomobili/s_probegom-ASgBAgICAUSGFMjmAQ?f=ASgBAQICAUSGFMjmAQFAptoOFAI&radius=100&s=104&user=1"
     driver.implicitly_wait(5)
-    i = 0
-    base_url1 = []
-    ad_url1 = []        
+
+    i=0  
     sait=[]
     driver.implicitly_wait(5)   
     id_find = [x.get_attribute("id") for x in driver.find_elements_by_xpath("//div[@data-marker='item']")]
