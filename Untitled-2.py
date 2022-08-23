@@ -17,7 +17,7 @@ def tg_bot(ad_url1,sait,avto_name,avto_price):
 
     if g==0:
         sait.append(ad_url1)
-        base_url='http://api.telegram.org/bot5183475207:AAHJVgxcqk4ptQz-Iz0Z-rcGcTWXiAxs6mU/sendMessage?chat_id=-657570594&text="{}"'.format("Новый авто: " + avto_name + "\n Цена - " + avto_price + "\n Ссылка:" + ad_url1)
+        base_url='http://api.telegram.org/bot5183475207:AAHJVgxcqk4ptQz-Iz0Z-rcGcTWXiAxs6mU/sendMessage?chat_id=!!!ВАШ ИД ЧАТА!!!&text="{}"'.format("Новый авто: " + avto_name + "\n Цена - " + avto_price + "\n Ссылка:" + ad_url1)
         requests.get(base_url)
 
 def load_price_saita():
